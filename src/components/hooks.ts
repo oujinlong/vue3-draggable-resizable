@@ -228,7 +228,7 @@ const MOVE_HANDLES: (keyof HTMLElementEventMap)[] = ['mousemove', 'touchmove']
 
 function getPosition(e: HandleEvent) {
   // 组件被 transform:scale(x), 导致拖拽位置不准确
-  const { scale } = getTransformScale(containerRef.value)
+  const scale = 1.5;
   const x = 'touches' in e ? e.touches[0].pageX : e.pageX
   const y = 'touches' in e ? e.touches[0].pageY : e.pageY
   return [x / scale, y / scale]
