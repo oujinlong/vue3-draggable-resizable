@@ -224,6 +224,7 @@ export function initLimitSizeAndMethods(
       )
     },
     setScale(val: number) {
+      _scale = val
       return val
     }
   }
@@ -594,7 +595,6 @@ export function watchProps(
   watch(
     () => props.scale,
     (newVal: number) => {
-      console.log('watch scale:', newVal)
       setScale(newVal)
     }
   )
