@@ -141,7 +141,6 @@ export function initLimitSizeAndMethods(
     resizingMaxHeight,
     resizingMinWidth,
     resizingMinHeight,
-    setScale,
   } = containerProps
   const { setWidth, setHeight, setTop, setLeft } = containerProps
   const { parentWidth, parentHeight } = parentSize
@@ -177,7 +176,7 @@ export function initLimitSizeAndMethods(
     }),
     maxTop: computed(() => {
       return props.parent ? parentHeight.value - height.value : Infinity
-    })
+    }),
   }
   const limitMethods = {
     setWidth(val: number) {
@@ -223,6 +222,9 @@ export function initLimitSizeAndMethods(
           Math.max(limitProps.minLeft.value, val)
         )
       )
+    },
+    setScale(val: number) {
+      return val
     }
   }
   return {
