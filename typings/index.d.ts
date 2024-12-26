@@ -29,6 +29,7 @@ declare const _default: ({
             classNameActive: string;
             classNameHandle: string;
             lockAspectRatio: boolean;
+            scale: number;
         }> & Pick<Readonly<{
             active: boolean;
             x: number;
@@ -54,6 +55,7 @@ declare const _default: ({
             classNameActive: string;
             classNameHandle: string;
             lockAspectRatio: boolean;
+            scale: number;
         } & {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "style" | "key" | "ref" | "class" | "onVnodeBeforeMount" | "onVnodeMounted" | "onVnodeBeforeUpdate" | "onVnodeUpdated" | "onVnodeBeforeUnmount" | "onVnodeUnmounted">;
         $attrs: Record<string, unknown>;
         $refs: Record<string, unknown>;
@@ -89,6 +91,7 @@ declare const _default: ({
             classNameActive: string;
             classNameHandle: string;
             lockAspectRatio: boolean;
+            scale: number;
         } & {}>, {
             handlesFiltered: import("vue").ComputedRef<import("./components/types").ResizingHandle[]>;
             resizeHandleDown: (e: MouseEvent, handleType: import("./components/types").ResizingHandle) => void;
@@ -120,6 +123,7 @@ declare const _default: ({
             resizingMinWidth: import("vue").Ref<number>;
             resizingMinHeight: import("vue").Ref<number>;
             aspectRatio: import("vue").ComputedRef<number>;
+            scale: import("vue").Ref<number>;
             setEnable: (value: boolean) => boolean;
             setDragging: (value: boolean) => boolean;
             setResizing: (value: boolean) => boolean;
@@ -132,6 +136,7 @@ declare const _default: ({
             $setHeight: (val: number) => number;
             $setTop: (val: number) => number;
             $setLeft: (val: number) => number;
+            setScale: (value: number) => number;
             containerRef: import("vue").Ref<HTMLElement>;
             containerProvider: import("./components/types").ContainerProvider;
         }, unknown, {
@@ -166,6 +171,7 @@ declare const _default: ({
             classNameActive: string;
             classNameHandle: string;
             lockAspectRatio: boolean;
+            scale: number;
         }>;
         $forceUpdate: import("vue").ReactiveEffect<any>;
         $nextTick: typeof import("vue").nextTick;
@@ -195,6 +201,7 @@ declare const _default: ({
         classNameActive: string;
         classNameHandle: string;
         lockAspectRatio: boolean;
+        scale: number;
     } & {}> & import("vue").ShallowUnwrapRef<{
         handlesFiltered: import("vue").ComputedRef<import("./components/types").ResizingHandle[]>;
         resizeHandleDown: (e: MouseEvent, handleType: import("./components/types").ResizingHandle) => void;
@@ -240,6 +247,8 @@ declare const _default: ({
         $setLeft: (val: number) => number;
         containerRef: import("vue").Ref<HTMLElement>;
         containerProvider: import("./components/types").ContainerProvider;
+        scale: import("vue").Ref<number>;
+        setScale: (value: number) => number;
     }> & {
         style: {
             [propName: string]: string;
@@ -276,6 +285,7 @@ declare const _default: ({
     classNameActive: string;
     classNameHandle: string;
     lockAspectRatio: boolean;
+    scale: number;
 } & {}>, {
     handlesFiltered: import("vue").ComputedRef<import("./components/types").ResizingHandle[]>;
     resizeHandleDown: (e: MouseEvent, handleType: import("./components/types").ResizingHandle) => void;
@@ -321,6 +331,8 @@ declare const _default: ({
     $setLeft: (val: number) => number;
     containerRef: import("vue").Ref<HTMLElement>;
     containerProvider: import("./components/types").ContainerProvider;
+    scale: import("vue").Ref<number>;
+    setScale: (value: number) => number;
 }, unknown, {
     style(): {
         [propName: string]: string;
@@ -353,6 +365,7 @@ declare const _default: ({
     classNameActive: string;
     classNameHandle: string;
     lockAspectRatio: boolean;
+    scale: number;
 }> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & ((app: App<any>, ...options: any[]) => any) & {
     install?: (app: App<any>, ...options: any[]) => any;
 }) | ({
@@ -384,6 +397,7 @@ declare const _default: ({
             classNameActive: string;
             classNameHandle: string;
             lockAspectRatio: boolean;
+            scale: number;
         }> & Pick<Readonly<{
             active: boolean;
             x: number;
@@ -409,6 +423,7 @@ declare const _default: ({
             classNameActive: string;
             classNameHandle: string;
             lockAspectRatio: boolean;
+            scale: number;
         } & {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "style" | "key" | "ref" | "class" | "onVnodeBeforeMount" | "onVnodeMounted" | "onVnodeBeforeUpdate" | "onVnodeUpdated" | "onVnodeBeforeUnmount" | "onVnodeUnmounted">;
         $attrs: Record<string, unknown>;
         $refs: Record<string, unknown>;
@@ -444,6 +459,7 @@ declare const _default: ({
             classNameActive: string;
             classNameHandle: string;
             lockAspectRatio: boolean;
+            scale: number;
         } & {}>, {
             handlesFiltered: import("vue").ComputedRef<import("./components/types").ResizingHandle[]>;
             resizeHandleDown: (e: MouseEvent, handleType: import("./components/types").ResizingHandle) => void;
@@ -487,6 +503,8 @@ declare const _default: ({
             $setHeight: (val: number) => number;
             $setTop: (val: number) => number;
             $setLeft: (val: number) => number;
+            setScale: (value: number) => number;
+            scale: import("vue").Ref<number>;
             containerRef: import("vue").Ref<HTMLElement>;
             containerProvider: import("./components/types").ContainerProvider;
         }, unknown, {
@@ -521,6 +539,7 @@ declare const _default: ({
             classNameActive: string;
             classNameHandle: string;
             lockAspectRatio: boolean;
+            scale: number;
         }>;
         $forceUpdate: import("vue").ReactiveEffect<any>;
         $nextTick: typeof import("vue").nextTick;
@@ -550,6 +569,7 @@ declare const _default: ({
         classNameActive: string;
         classNameHandle: string;
         lockAspectRatio: boolean;
+        scale: number;
     } & {}> & import("vue").ShallowUnwrapRef<{
         handlesFiltered: import("vue").ComputedRef<import("./components/types").ResizingHandle[]>;
         resizeHandleDown: (e: MouseEvent, handleType: import("./components/types").ResizingHandle) => void;
@@ -581,6 +601,7 @@ declare const _default: ({
         resizingMinWidth: import("vue").Ref<number>;
         resizingMinHeight: import("vue").Ref<number>;
         aspectRatio: import("vue").ComputedRef<number>;
+        scale: import("vue").Ref<number>;
         setEnable: (value: boolean) => boolean;
         setDragging: (value: boolean) => boolean;
         setResizing: (value: boolean) => boolean;
@@ -593,6 +614,7 @@ declare const _default: ({
         $setHeight: (val: number) => number;
         $setTop: (val: number) => number;
         $setLeft: (val: number) => number;
+        setScale: (value: number) => number;
         containerRef: import("vue").Ref<HTMLElement>;
         containerProvider: import("./components/types").ContainerProvider;
     }> & {
@@ -631,6 +653,7 @@ declare const _default: ({
     classNameActive: string;
     classNameHandle: string;
     lockAspectRatio: boolean;
+    scale: number;
 } & {}>, {
     handlesFiltered: import("vue").ComputedRef<import("./components/types").ResizingHandle[]>;
     resizeHandleDown: (e: MouseEvent, handleType: import("./components/types").ResizingHandle) => void;
@@ -670,10 +693,13 @@ declare const _default: ({
     setResizingMaxWidth: (value: number) => number;
     setResizingMinWidth: (value: number) => number;
     setResizingMinHeight: (value: number) => number;
+    setScale: (value: number) => number;
     $setWidth: (val: number) => number;
     $setHeight: (val: number) => number;
     $setTop: (val: number) => number;
     $setLeft: (val: number) => number;
+    scale: import("vue").Ref<number>;
+    setScale: (value: number) => number;
     containerRef: import("vue").Ref<HTMLElement>;
     containerProvider: import("./components/types").ContainerProvider;
 }, unknown, {
@@ -708,6 +734,7 @@ declare const _default: ({
     classNameActive: string;
     classNameHandle: string;
     lockAspectRatio: boolean;
+    scale: number;
 }> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & {
     install: (app: App<any>, ...options: any[]) => any;
 });

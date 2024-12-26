@@ -55,6 +55,7 @@ export function initState(props: any, emit: any) {
     { immediate: true }
   )
   watch(scale, (newVal) => {
+    console.log('watch scale:', newVal)
     _scale = newVal
     emit('update:scale', newVal)
   })
@@ -105,7 +106,8 @@ export function initState(props: any, emit: any) {
     setHeight: (val: number) => setHeight(Math.floor(val)),
     setTop: (val: number) => setTop(Math.floor(val)),
     setLeft: (val: number) => setLeft(Math.floor(val)),
-    scale
+    scale,
+    setScale
   }
 }
 
@@ -138,7 +140,8 @@ export function initLimitSizeAndMethods(
     resizingMaxWidth,
     resizingMaxHeight,
     resizingMinWidth,
-    resizingMinHeight
+    resizingMinHeight,
+    setScale,
   } = containerProps
   const { setWidth, setHeight, setTop, setLeft } = containerProps
   const { parentWidth, parentHeight } = parentSize
@@ -561,7 +564,7 @@ export function watchProps(
   props: any,
   limits: ReturnType<typeof initLimitSizeAndMethods>
 ) {
-  const { setWidth, setHeight, setLeft, setTop } = limits
+  const { setWidth, setHeight, setLeft, setTop, setScale } = limits
   watch(
     () => props.w,
     (newVal: number) => {
@@ -584,6 +587,13 @@ export function watchProps(
     () => props.y,
     (newVal: number) => {
       setTop(newVal)
+    }
+  )
+  watch(
+    () => props.scale,
+    (newVal: number) => {
+      console.log('watch scale:', newVal)
+      setScale(newVal)
     }
   )
 }
