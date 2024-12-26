@@ -227,13 +227,24 @@ const UP_HANDLES: (keyof HTMLElementEventMap)[] = ['mouseup', 'touchend']
 const MOVE_HANDLES: (keyof HTMLElementEventMap)[] = ['mousemove', 'touchmove']
 
 function getPosition(e: HandleEvent) {
-  // 父组件被 transform:scale(1.5) 之后，e.pageX 会有问题, 用 e.clientX 代替
-  if ('touches' in e) {
-    return [e.touches[0].clientX, e.touches[0].clientY]
-  }
-  return [e.clientX, e.clientY]
-  
+  // 组件被 transform:scale(x), 导致拖拽位置不准确
+  const { scale } = getTransformScale(containerRef.value)
+  const x = 'touches' in e ? e.touches[0].pageX : e.pageX
+  const y = 'touches' in e ? e.touches[0].pageY : e.pageY
+  return [x / scale, y / scale]
 }
+
+function getTransformScale(el: HTMLElement) {
+  let scale = 1
+  while (el) {
+    const { transform } = window.getComputedStyle(el)
+    if (transform && transform !== 'none') {
+      const values = transform.split('(')[1].split(')')[0].split(',')
+      scale *= Number(values[0])
+    }
+    el = el.parentElement
+  }
+  return { scale }
 
 export function initDraggableContainer(
   containerRef: Ref<HTMLElement | undefined>,
