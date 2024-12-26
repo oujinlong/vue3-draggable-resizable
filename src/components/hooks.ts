@@ -15,7 +15,7 @@ import {
 } from './types'
 
 type HandleEvent = MouseEvent | TouchEvent
-
+let _scale = 1
 export function useState<T>(initialState: T): [Ref<T>, (value: T) => T] {
   const state = ref(initialState) as Ref<T>
   const setState = (value: T): T => {
@@ -38,7 +38,9 @@ export function initState(props: any, emit: any) {
   const [resizingMaxHeight, setResizingMaxHeight] = useState<number>(Infinity)
   const [resizingMinWidth, setResizingMinWidth] = useState<number>(props.minW)
   const [resizingMinHeight, setResizingMinHeight] = useState<number>(props.minH)
+  const [scale] = useState<number>(props.scale)
   const aspectRatio = computed(() => height.value / width.value)
+  _scale = scale.value
   watch(
     width,
     (newVal) => {
@@ -99,7 +101,8 @@ export function initState(props: any, emit: any) {
     setWidth: (val: number) => setWidth(Math.floor(val)),
     setHeight: (val: number) => setHeight(Math.floor(val)),
     setTop: (val: number) => setTop(Math.floor(val)),
-    setLeft: (val: number) => setLeft(Math.floor(val))
+    setLeft: (val: number) => setLeft(Math.floor(val)),
+    scale
   }
 }
 
@@ -227,11 +230,12 @@ const UP_HANDLES: (keyof HTMLElementEventMap)[] = ['mouseup', 'touchend']
 const MOVE_HANDLES: (keyof HTMLElementEventMap)[] = ['mousemove', 'touchmove']
 
 function getPosition(e: HandleEvent) {
+  console.log({scale: _scale})
   // 组件被 transform:scale(x), 导致拖拽位置不准确
   const scale = 1.5;
   const x = 'touches' in e ? e.touches[0].pageX : e.pageX
   const y = 'touches' in e ? e.touches[0].pageY : e.pageY
-  return [x / scale, y / scale]
+  return [x / _scale, y / _scale]
 }
 
 function getTransformScale(el: HTMLElement) {
