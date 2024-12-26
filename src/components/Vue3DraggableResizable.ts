@@ -127,6 +127,10 @@ const VdrProps = {
   lockAspectRatio: {
     type: Boolean,
     default: false
+  },
+  scale: {
+    type: Number,
+    default: 1
   }
 }
 
