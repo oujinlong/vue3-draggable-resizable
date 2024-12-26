@@ -245,6 +245,7 @@ function getTransformScale(el: HTMLElement) {
     el = el.parentElement
   }
   return { scale }
+}
 
 export function initDraggableContainer(
   containerRef: Ref<HTMLElement | undefined>,
