@@ -227,11 +227,17 @@ const UP_HANDLES: (keyof HTMLElementEventMap)[] = ['mouseup', 'touchend']
 const MOVE_HANDLES: (keyof HTMLElementEventMap)[] = ['mousemove', 'touchmove']
 
 function getPosition(e: HandleEvent) {
+  console.log('getPosition', e)
   if ('touches' in e) {
-    return [e.touches[0].pageX, e.touches[0].pageY]
+    // return [e.touches[0].pageX, e.touches[0].pageY]
+    // 如果被 transform: scale() 缩放过，需要除以缩放比例
+    const rect = (e.target as HTMLElement).getBoundingClientRect()
+    return [
+      (e.touches[0].pageX - rect.left) / (rect.right - rect.left) * rect.width,
+      (e.touches[0].pageY - rect.top) / (rect.bottom - rect.top) * rect.height
+    ]
   } else {
-    return [e.pageX, e.pageY]
-  }
+    return [e.pageX, e.pageY]}
 }
 
 export function initDraggableContainer(

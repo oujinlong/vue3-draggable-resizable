@@ -218,7 +218,6 @@ const VueDraggableResizable = defineComponent({
     }
   },
   mounted() {
-    alert('mounted')
     if (!this.containerRef) return
     this.containerRef.ondragstart = () => false
     const { width, height } = getElSize(this.containerRef)

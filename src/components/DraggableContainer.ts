@@ -38,7 +38,6 @@ export default defineComponent({
     }
   },
   setup(props) {
-    alert('vue3 draggable container')
     const positionStore = reactive<PositionStore>({})
     const updatePosition: UpdatePosition = (id: string, position: Position) => {
       positionStore[id] = position
