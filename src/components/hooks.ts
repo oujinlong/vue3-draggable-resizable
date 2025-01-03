@@ -13,7 +13,8 @@ import {
   ReferenceLineMap,
   ResizingHandle
 } from './types'
-let _scale = 1
+
+const _scale = ref(1)
 
 type HandleEvent = MouseEvent | TouchEvent
 export function useState<T>(initialState: T): [Ref<T>, (value: T) => T] {
@@ -55,10 +56,9 @@ export function initState(props: any, emit: any) {
     { immediate: true }
   )
   watch(scale, (newVal) => {
-    console.log('watch scale:', newVal)
-    _scale = newVal
+    _scale.value = newVal
     emit('update:scale', newVal)
-  })
+  }, { immediate: true })
   watch(top, (newVal) => {
     emit('update:y', newVal)
   })
@@ -224,7 +224,7 @@ export function initLimitSizeAndMethods(
       )
     },
     setScale(val: number) {
-      _scale = val
+      _scale.value = val
       return val
     }
   }
@@ -239,11 +239,9 @@ const UP_HANDLES: (keyof HTMLElementEventMap)[] = ['mouseup', 'touchend']
 const MOVE_HANDLES: (keyof HTMLElementEventMap)[] = ['mousemove', 'touchmove']
 
 function getPosition(e: HandleEvent) {
-  // 组件被 transform:scale(x), 导致拖拽位置不准确
-  console.log('_scale', _scale)
   const x = 'touches' in e ? e.touches[0].pageX : e.pageX
   const y = 'touches' in e ? e.touches[0].pageY : e.pageY
-  return [x / _scale, y / _scale]
+  return [x / _scale.value, y / _scale.value]
 }
 
 
@@ -595,7 +593,9 @@ export function watchProps(
   watch(
     () => props.scale,
     (newVal: number) => {
-      setScale(newVal)
-    }
+      _scale.value = newVal
+      limits.setScale(newVal)
+    },
+    { immediate: true }
   )
 }

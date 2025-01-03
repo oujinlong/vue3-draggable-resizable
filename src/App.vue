@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <div>
+      scale:{{ scale }} <button @click="scale += 0.1">+</button><button @click="scale -= 0.1">-</button>
+    </div>
+    <div>
       x:{{ x }} <button @click="x += 10">+</button><button @click="x -= 10">-</button>
     </div>
     <div>
@@ -22,6 +25,7 @@
         v-model:w="w"
         v-model:h="h"
         v-model:active="active"
+        :scale="scale"
         :draggable="draggable"
         :resizable="resizable"
         :parent="true"
@@ -62,6 +66,7 @@ export default defineComponent({
       active: false,
       draggable: true,
       resizable: true,
+      scale: 1,
     };
   },
   mounted() {},
